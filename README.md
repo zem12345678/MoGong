@@ -1,1 +1,1 @@
-MoGong 墨攻是一个开源的Golang实现的云原生的融合多云/混合云的云平台， 本项目使用Go1.18.x、 Gin、Gorm开发， 前端使用的是Vue3+Ant Design2.2.x框架。
+MoGong 墨攻是一个开源的Golang实现的云原生的融合多云/混合云的云平台， 本项目使用Go1.17.x、 Gin、Gorm开发， 前端使用的是Vue3+Ant Design2.2.x框架。
