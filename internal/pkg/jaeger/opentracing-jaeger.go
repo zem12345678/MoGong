@@ -9,7 +9,7 @@ import (
 	"go.uber.org/zap"
 )
 
-func NewOtJaegerConfiguration(v *viper.Viper, logger *zap.Logger) (*config.Configuration, error) {
+func NewOtOptions(v *viper.Viper, logger *zap.Logger) (*config.Configuration, error) {
 	var (
 		err error
 		c   = new(config.Configuration)

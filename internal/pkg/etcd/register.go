@@ -95,7 +95,7 @@ func (r *Register) Stop() {
 }
 
 // unregister 删除节点
-func (r *Register) unregister() error {
+func (r *Register) Unregister() error {
 	_, err := r.cli.Delete(context.Background(), BuildRegisterPath(r.srvInfo))
 	return err
 }
@@ -106,7 +106,7 @@ func (r *Register) keepAlive() {
 	for {
 		select {
 		case <-r.closeCh:
-			if err := r.unregister(); err != nil {
+			if err := r.Unregister(); err != nil {
 				r.logger.Error("unregister failed, error: ", zap.Error(err))
 			}
 

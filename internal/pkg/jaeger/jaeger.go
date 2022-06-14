@@ -21,7 +21,7 @@ type Options struct {
 	id          int64
 }
 
-func NewConfiguration(v *viper.Viper, logger *zap.Logger) (*Options, error) {
+func NewOptions(v *viper.Viper, logger *zap.Logger) (*Options, error) {
 	var (
 		err error
 		o   = new(Options)
