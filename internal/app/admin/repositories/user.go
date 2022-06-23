@@ -15,6 +15,7 @@ import (
 
 type SysUserRepo interface {
 	GetUserByID(id int64) (res *models.SysUser, err error)
+	GetUserByUserName(userName string) (res *models.SysUser, err error)
 }
 
 type DefaultSysUserRepository struct {
@@ -33,10 +34,18 @@ func NewSysUserRepository(logger *zap.Logger, dbPool *mysql.DatabasePool, mongo 
 	}
 }
 
-func (d *DefaultSysUserRepository) GetUserByID(ID int64) (result *models.SysUser, err error) {
-	res := new(models.SysUser)
+func (d *DefaultSysUserRepository) GetUserByID(ID int64) (res *models.SysUser, err error) {
+	res = new(models.SysUser)
 	if err = d.dbRead.Model(res).Where("id = ?", ID).First(res).Error; err != nil {
 		return nil, errors.Wrapf(err, "sql user error[id=%s]", ID)
+	}
+	return
+}
+
+func (d *DefaultSysUserRepository) GetUserByUserName(userName string) (res *models.SysUser, err error) {
+	res = new(models.SysUser)
+	if err = d.dbRead.Model(res).Where("username = ?", userName).First(res).Error; err != nil {
+		return nil, errors.Wrapf(err, "get user error[user_name=%s]", userName)
 	}
 	return
 }
