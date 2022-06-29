@@ -3,17 +3,23 @@ module mogong
 go 1.17
 
 require (
+	github.com/BurntSushi/toml v1.0.0
 	github.com/Shopify/sarama v1.19.0
 	github.com/alibaba/sentinel-golang v1.0.4
 	github.com/deathowl/go-metrics-prometheus v0.0.0-20200518174047-74482eab5bfb
 	github.com/gin-contrib/cors v1.3.1
+	github.com/gin-contrib/i18n v0.0.1
 	github.com/gin-contrib/pprof v1.3.0
 	github.com/gin-contrib/zap v0.0.2
 	github.com/gin-gonic/gin v1.8.1
+	github.com/go-playground/locales v0.14.0
+	github.com/go-playground/universal-translator v0.18.0
+	github.com/go-playground/validator v9.31.0+incompatible
 	github.com/golang-jwt/jwt v3.2.2+incompatible
 	github.com/gomodule/redigo v1.8.8
 	github.com/grpc-ecosystem/go-grpc-middleware v1.0.1-0.20190118093823-f849b5445de4
 	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0
+	github.com/nicksnyder/go-i18n/v2 v2.2.0
 	github.com/olivere/elastic/v7 v7.0.32
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/pkg/errors v0.9.1
@@ -35,7 +41,10 @@ require (
 	go.opentelemetry.io/otel/sdk v1.7.0
 	go.opentelemetry.io/otel/trace v1.7.0
 	go.uber.org/zap v1.21.0
+	golang.org/x/crypto v0.0.0-20220411220226-7b82a4e95df4
+	golang.org/x/text v0.3.7
 	google.golang.org/grpc v1.47.0
+	gopkg.in/go-playground/validator.v9 v9.29.1
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0
 	gorm.io/driver/mysql v1.3.4
 	gorm.io/gorm v1.23.6
@@ -69,8 +78,6 @@ require (
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-ole/go-ole v1.2.4 // indirect
 	github.com/go-ping/ping v0.0.0-20211130115550-779d1e919534 // indirect
-	github.com/go-playground/locales v0.14.0 // indirect
-	github.com/go-playground/universal-translator v0.18.0 // indirect
 	github.com/go-playground/validator/v10 v10.10.0 // indirect
 	github.com/go-redis/redis/v8 v8.11.5 // indirect
 	github.com/go-redis/redis_rate/v9 v9.1.2 // indirect
@@ -161,12 +168,10 @@ require (
 	go.etcd.io/etcd/client/v2 v2.305.4 // indirect
 	go.uber.org/atomic v1.7.0 // indirect
 	go.uber.org/multierr v1.6.0 // indirect
-	golang.org/x/crypto v0.0.0-20220411220226-7b82a4e95df4 // indirect
 	golang.org/x/mod v0.6.0-dev.0.20220106191415-9b9b3d81d5e3 // indirect
 	golang.org/x/net v0.0.0-20220520000938-2e3eb7b945c2 // indirect
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
 	golang.org/x/sys v0.0.0-20220520151302-bc2c85ada10a // indirect
-	golang.org/x/text v0.3.7 // indirect
 	golang.org/x/tools v0.1.10 // indirect
 	golang.org/x/xerrors v0.0.0-20220517211312-f3a8303e98df // indirect
 	google.golang.org/genproto v0.0.0-20220519153652-3a47de7e79bd // indirect

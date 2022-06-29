@@ -29,7 +29,7 @@ func Next() gin.HandlerFunc {
 		if method == "OPTIONS" {
 			c.AbortWithStatus(http.StatusAccepted)
 		}
-		c.Set("language", language)
+		c.Set("lang", language)
 		c.Next()
 	}
 }
