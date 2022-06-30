@@ -6,6 +6,7 @@ require (
 	github.com/BurntSushi/toml v1.0.0
 	github.com/Shopify/sarama v1.19.0
 	github.com/alibaba/sentinel-golang v1.0.4
+	github.com/apache/rocketmq-client-go/v2 v2.1.0
 	github.com/deathowl/go-metrics-prometheus v0.0.0-20200518174047-74482eab5bfb
 	github.com/gin-contrib/cors v1.3.1
 	github.com/gin-contrib/i18n v0.0.1
@@ -16,9 +17,10 @@ require (
 	github.com/go-playground/universal-translator v0.18.0
 	github.com/go-playground/validator/v10 v10.10.0
 	github.com/golang-jwt/jwt v3.2.2+incompatible
-	github.com/gomodule/redigo v1.8.8
+	github.com/gomodule/redigo v2.0.0+incompatible
 	github.com/grpc-ecosystem/go-grpc-middleware v1.0.1-0.20190118093823-f849b5445de4
 	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0
+	github.com/libi/dcron v0.2.2
 	github.com/mojocn/base64Captcha v1.3.5
 	github.com/nicksnyder/go-i18n/v2 v2.2.0
 	github.com/olivere/elastic/v7 v7.0.32
@@ -54,6 +56,7 @@ require (
 	github.com/HdrHistogram/hdrhistogram-go v1.1.2 // indirect
 	github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d // indirect
 	github.com/akutz/memconn v0.1.0 // indirect
+	github.com/apache/rocketmq-client-go v1.2.5 // indirect
 	github.com/apache/thrift v0.16.0 // indirect
 	github.com/armon/go-metrics v0.3.10 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
@@ -70,6 +73,7 @@ require (
 	github.com/eapache/go-xerial-snappy v0.0.0-20180814174437-776d5712da21 // indirect
 	github.com/eapache/queue v1.1.0 // indirect
 	github.com/edwingeng/doublejump v0.0.0-20210724020454-c82f1bcb3280 // indirect
+	github.com/emirpasic/gods v1.12.0 // indirect
 	github.com/facebookgo/clock v0.0.0-20150410010913-600d898af40a // indirect
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/fsnotify/fsnotify v1.5.4 // indirect
@@ -86,6 +90,7 @@ require (
 	github.com/goccy/go-json v0.9.7 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0 // indirect
+	github.com/golang/mock v1.6.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/uuid v1.3.0 // indirect
@@ -111,6 +116,7 @@ require (
 	github.com/klauspost/compress v1.13.6 // indirect
 	github.com/klauspost/cpuid/v2 v2.0.12 // indirect
 	github.com/klauspost/reedsolomon v1.9.16 // indirect
+	github.com/konsorten/go-windows-terminal-sequences v1.0.3 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/lucas-clemente/quic-go v0.27.0 // indirect
 	github.com/magiconair/properties v1.8.6 // indirect
@@ -135,11 +141,13 @@ require (
 	github.com/prometheus/client_model v0.2.0 // indirect
 	github.com/prometheus/common v0.26.0 // indirect
 	github.com/prometheus/procfs v0.6.0 // indirect
+	github.com/robfig/cron/v3 v3.0.1 // indirect
 	github.com/rpcxio/libkv v0.5.1-0.20210420120011-1fceaedca8a5 // indirect
 	github.com/rs/cors v1.8.2 // indirect
 	github.com/rubyist/circuitbreaker v2.2.1+incompatible // indirect
 	github.com/samuel/go-zookeeper v0.0.0-20201211165307-7117e9ea2414 // indirect
 	github.com/shirou/gopsutil/v3 v3.21.6 // indirect
+	github.com/sirupsen/logrus v1.6.0 // indirect
 	github.com/smallnest/quick v0.0.0-20220103065406-780def6371e6 // indirect
 	github.com/soheilhy/cmux v0.1.5 // indirect
 	github.com/spf13/afero v1.8.2 // indirect
@@ -149,6 +157,9 @@ require (
 	github.com/subosito/gotenv v1.3.0 // indirect
 	github.com/templexxx/cpufeat v0.0.0-20180724012125-cef66df7f161 // indirect
 	github.com/templexxx/xor v0.0.0-20191217153810-f85b25db303b // indirect
+	github.com/tidwall/gjson v1.2.1 // indirect
+	github.com/tidwall/match v1.0.1 // indirect
+	github.com/tidwall/pretty v1.0.0 // indirect
 	github.com/tinylib/msgp v1.1.6 // indirect
 	github.com/tjfoc/gmsm v1.4.1 // indirect
 	github.com/tklauser/go-sysconf v0.3.6 // indirect
@@ -181,4 +192,5 @@ require (
 	gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0 // indirect
+	stathat.com/c/consistent v1.0.1-0.20190920041245-30ea17e8a481 // indirect
 )

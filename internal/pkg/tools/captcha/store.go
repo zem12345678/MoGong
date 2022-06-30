@@ -45,7 +45,7 @@ func (rs *RedisStore) Get(key string, clear bool) string {
 	}
 	if clear {
 		res, err := redis.Delete(key)
-		if res != true && err != nil {
+		if !res && err != nil {
 			log.Client.Logger.Error("RedisStoreGetError", zap.Error(err))
 			return ""
 		}
