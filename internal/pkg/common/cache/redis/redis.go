@@ -1,6 +1,7 @@
 package redis
 
 import (
+	"encoding/json"
 	"fmt"
 	"time"
 
@@ -170,6 +171,179 @@ func UnionStore(rankDays int, keyRank string, c redis.Conn) error {
 		return err
 	}
 	return nil
+}
+
+func Set(key string, data interface{}, time int) error {
+	conn := Client.RedisCon.Get()
+	defer conn.Close()
+
+	value, err := json.Marshal(data)
+	if err != nil {
+		return err
+	}
+
+	_, err = conn.Do("SET", key, value)
+	if err != nil {
+		return err
+	}
+	if time > 0 {
+		_, err = conn.Do("EXPIRE", key, time)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+func RevZrange(key string, max, min int64) (res []int64, err error) {
+	conn := Client.RedisCon.Get()
+	defer conn.Close()
+
+	res, err = redis.Int64s(conn.Do("ZREVRANGEBYSCORE", key, max, min))
+	if err != nil {
+		//todo, add errlog
+	}
+	return
+
+}
+
+func MGet(keys []string) (res [][]byte, err error) {
+	conn := Client.RedisCon.Get()
+	defer conn.Close()
+	return redis.ByteSlices(conn.Do("MGET", keys))
+
+}
+
+func Incr(key ...string) (int64, error) {
+	conn := Client.RedisCon.Get()
+	defer conn.Close()
+
+	val, err := conn.Do("INCR", key)
+	if err != nil {
+		fmt.Printf("redis incr异常,原因是:%s", err.Error())
+	}
+	return val.(int64), err
+
+}
+
+// Exists check a key
+func Exists(key string) bool {
+	conn := Client.RedisCon.Get()
+	defer conn.Close()
+
+	exists, err := redis.Bool(conn.Do("EXISTS", key))
+	if err != nil {
+		return false
+	}
+
+	return exists
+}
+
+// Get get a key
+func Get(key string) ([]byte, error) {
+	conn := Client.RedisCon.Get()
+	defer conn.Close()
+
+	reply, err := redis.Bytes(conn.Do("GET", key))
+	if err != nil {
+		return nil, err
+	}
+
+	return reply, nil
+}
+
+// SetUnfollowStatus delete a kye
+func Delete(key string) (bool, error) {
+	conn := Client.RedisCon.Get()
+	defer conn.Close()
+
+	return redis.Bool(conn.Do("DEL", key))
+}
+
+func Expire(key string, unixTime int64) bool {
+	conn := Client.RedisCon.Get()
+	defer conn.Close()
+	ok, _ := redis.Bool(conn.Do("EXPIRE", key, unixTime))
+	return ok
+
+}
+
+func ZAdd(key, mem string, score int) {
+	conn := Client.RedisCon.Get()
+	defer conn.Close()
+
+	_, err := redis.Bool(conn.Do("ZADD", key, mem, score))
+	if err != nil {
+		// todo add err
+	}
+
+}
+
+func SAdd(key, mem string) bool {
+
+	conn := Client.RedisCon.Get()
+	defer conn.Close()
+
+	ok, err := redis.Bool(conn.Do("SADD", key, mem))
+	if err != nil {
+		// todo add err
+	}
+	return ok
+
+}
+
+func SRem(key, mem string) bool {
+	conn := Client.RedisCon.Get()
+	defer conn.Close()
+	ok, err := redis.Bool(conn.Do("SREM", key, mem))
+	if err != nil {
+		//todo add err
+	}
+
+	return ok
+
+}
+
+func ZrangeByScore(key string, min, max int64) {
+
+}
+
+// LikeDeletes batch delete
+func LikeDeletes(key string) error {
+	conn := Client.RedisCon.Get()
+	defer conn.Close()
+
+	keys, err := redis.Strings(conn.Do("KEYS", "*"+key+"*"))
+	if err != nil {
+		return err
+	}
+
+	for _, key := range keys {
+		_, err = Delete(key)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+func SetNx(key string, ttl int) int {
+	conn := Client.RedisCon.Get()
+	defer conn.Close()
+	res, err := redis.Int(conn.Do("SETNX", key, 1))
+	if err != nil {
+		fmt.Printf("redis setnx err:%v\n", err)
+	}
+	if ttl > 0 {
+		_, err = conn.Do("EXPIRE", key, ttl)
+		if err != nil {
+			fmt.Printf("redis setnx expire err:%v\n", err)
+		}
+	}
+
+	return res
 }
 
 // ProviderSet inject redis settings
