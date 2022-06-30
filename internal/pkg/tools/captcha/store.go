@@ -28,11 +28,13 @@ func (rs *RedisStore) UseWithCtx(ctx context.Context) base64Captcha.Store {
 	return rs
 }
 
-func (rs *RedisStore) Set(id string, value string) {
+func (rs *RedisStore) Set(id string, value string) error {
 	err := redis.Set(rs.PreKey+id, value, rs.Expiration)
 	if err != nil {
 		log.Client.Logger.Error("RedisStoreSetError", zap.Error(err))
+		return err
 	}
+	return err
 }
 
 func (rs *RedisStore) Get(key string, clear bool) string {
